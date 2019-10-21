@@ -1,0 +1,7 @@
+Ýstiyorsanýz baþka bir baþlýk ve sonluk metinleri girebilirsiniz. Sayfa sonu numaralandýrmasý için {0} sembolle birlikte herhangi bir metni kullanabilirsiniz.
+
+Yazdýrma aþamalarýný takip etmek isterseniz "Yaz Adýmlarý Göster" kutusu çentiklenmeli, iptal için ise kutu çentiksizlenmelidir.
+
+Yazdýrma iþlemi sürerken pencereyle etkileþimi sürdürmek isterseniz "Arkaplanda Yazdýr" çentiklenmeli, yazdýrma tamamlanýncaya kadar içerikle etkileþimi dondurmak için ise çentiksizlenmelidir.
+
+Müdahaleli (düzenleme ve deðiþiklikler mümkün) metin alaný içeriklerini son þekliyle yazdýrmak için de ikonlu "Yazdýr!" düðmesini týklamanýz yeterlidir.
