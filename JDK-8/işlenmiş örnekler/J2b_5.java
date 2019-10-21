@@ -1,0 +1,19 @@
+// J2b_5.java: BlockDemo (BlokGösteri) örneði.
+
+class J2b_5 {
+    public static void main(String[] args) {
+        boolean þart = true;
+
+        if (þart) {// Eðri/curly aç parantezle Blok-1 baþlangýcý...
+            System.out.println ("Þart true/doðru'dur.");
+        } // Eðri kapa parantezle Blok-1 sonu...
+        else {// Block-2 baþlangýcý...
+           System.out.println ("Þart false/yanlýþ'týr.");
+        } // Blok-2 sonu...
+    } // main(..) metodu sonu...
+} // J2b_5 sýnýfý sonu...
+
+/* Çýktý:
+**  >java J2b_5  **
+Þart true/doðru'dur.
+*/

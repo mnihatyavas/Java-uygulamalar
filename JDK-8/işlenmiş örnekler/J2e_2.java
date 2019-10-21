@@ -1,0 +1,103 @@
+// J2e_2.java: Card (Vanti) örneði.
+
+public class J2e_2 {
+    private final int sayý;
+    private final int takým;
+
+    // Takým çeþitleri...
+    public final static int KARO = 1;
+    public final static int MAÇA    = 2;
+    public final static int KUPA   = 3;
+    public final static int SÝNEK   = 4;
+
+    // Sayý çeþitleri...
+    public final static int AS   = 1;
+    public final static int ÝKÝ = 2;
+    public final static int ÜÇ = 3;
+    public final static int DÖRT  = 4;
+    public final static int BEÞ  = 5;
+    public final static int ALTI   = 6;
+    public final static int YEDÝ = 7;
+    public final static int SEKÝZ = 8;
+    public final static int DOKUZ  = 9;
+    public final static int ON   = 10;
+    public final static int OÐLAN  = 11;
+    public final static int KIZ = 12;
+    public final static int PAPAZ  = 13;
+
+    public J2e_2 (int sayý, int takým) {
+        assert geçerliSayýMý (sayý);
+        assert geçerliTakýmMý (takým);
+        this.sayý = sayý;
+        this.takým = takým;
+    } // J2e_2() kurucu sonu...
+
+    public int takýmAl() {return takým;}
+    public int sayýAl() {return sayý;}
+    public static boolean geçerliSayýMý (int sayý) {return AS <= sayý && sayý <= PAPAZ;}
+    public static boolean geçerliTakýmMý (int takým) {return KARO <= takým && takým <= SÝNEK;}
+
+    public static String sayýdanDizgeye (int sayý) {
+        switch (sayý) {
+            case AS: return "As";
+            case ÝKÝ: return "Ýki";
+            case ÜÇ: return "Üç";
+            case DÖRT: return "Dört";
+            case BEÞ: return "Beþ";
+            case ALTI: return "Altý";
+            case YEDÝ: return "Yedi";
+            case SEKÝZ: return "Sekiz";
+            case DOKUZ: return "Dokuz";
+            case ON: return "On";
+            case OÐLAN: return "Oðlan";
+            case KIZ: return "Kýz";
+            case PAPAZ: return "Papaz";
+            default: // Ya null döndürülmeli , ya da istisna fýrlatýlmalýdýr...
+                return null;
+        } // switch-case bloðu sonu...
+    } // sayýdanDizgeye(..) metodu sonu...
+
+    public static String takýmdanDizgeye (int takým) {
+        switch (takým) {
+            case KARO: return "Karo";
+            case MAÇA: return "Maça";
+            case KUPA: return "Kupa";
+            case SÝNEK: return "Sinek";
+            default: return null;
+        } // switch-case bloðu sonu...
+    } // takýmdanDizgeye(..) metodu sonu...
+
+    public static void main (String[] args) {
+        assert sayýdanDizgeye (AS) == "As";
+        assert sayýdanDizgeye (ÝKÝ) == "Ýki";
+        assert sayýdanDizgeye (ÜÇ) == "Üç";
+        assert sayýdanDizgeye (DÖRT) == "Dört";
+        assert sayýdanDizgeye (BEÞ) == "Beþ";
+        assert sayýdanDizgeye (ALTI) == "Altý";
+        assert sayýdanDizgeye (YEDÝ) == "Yedi";
+        assert sayýdanDizgeye (SEKÝZ) == "Sekiz";
+        assert sayýdanDizgeye (DOKUZ) == "Dokuz";
+        assert sayýdanDizgeye (ON) == "On";
+        assert sayýdanDizgeye (OÐLAN) == "Oðlan";
+        assert sayýdanDizgeye (KIZ) == "Kýz";
+        assert sayýdanDizgeye (PAPAZ) == "Papaz";
+
+        assert takýmdanDizgeye (KARO) == "Karo";
+        assert takýmdanDizgeye (MAÇA) == "Maça";
+        assert takýmdanDizgeye (KUPA) == "Kupa";
+        assert takýmdanDizgeye (SÝNEK) == "Sinek";
+
+        System.out.println ("sayýdanDizgeye(AS) == 'As': [" + (sayýdanDizgeye (AS) == "As") + "]");
+        System.out.println ("sayýdanDizgeye(PAPAZ) == 'Papaz': [" + (sayýdanDizgeye (PAPAZ) == "Papaz") + "]");
+        System.out.println ("takýmdanDizgeye(KARO) == 'Karo': [" + (takýmdanDizgeye (KARO) == "Karo") + "]");
+        System.out.println ("takýmdanDizgeye(SÝNEK) == 'Sinek': [" + (takýmdanDizgeye (SÝNEK) == "Sinek") + "]");
+    } // main(..) metodu sonu...
+} // J2e_2 sýnýfý sonu...
+
+/* Çýktý: assert ifadesini kullanabilmek için ">java -ea J2e_2" -ea bayraklý koþturulmalýdýr. Dese de inanma!
+**  >java J2e_2  **
+sayýdanDizgeye(AS) == 'As': [true]
+sayýdanDizgeye(PAPAZ) == 'Papaz': [true]
+takýmdanDizgeye(KARO) == 'Karo': [true]
+takýmdanDizgeye(SÝNEK) == 'Sinek': [true]
+*/
