@@ -1,0 +1,6 @@
+// J4a_2.java. QuoteServer (HikayeSunucu) örneði.
+
+// Gereken dosya: J4a_2x.java=QuoteServerThread
+class J4a_2 {// J4a_2x=QuoteServerThread/HikayeSunucuSicim...
+    public static void main (String[] args) {new J4a_2x().start();}
+} // J4a_2 sýnýfý sonu...
