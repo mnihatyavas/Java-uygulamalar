@@ -1,0 +1,76 @@
+// J5j_6.java: SwingPaintDemo3 (SwingBoyamaGösterisi3)
+
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics; 
+import java.awt.event.MouseListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseMotionListener;
+import java.awt.event.MouseMotionAdapter; 
+
+import javax.swing.SwingUtilities;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.BorderFactory;
+
+public class J5j_6 {
+    public static void main (String[] args) {
+        SwingUtilities.invokeLater (new Runnable() {public void run() {yaratVeGösterGUI();}});
+    } // main(..) metodu sonu...
+
+    private static void yaratVeGösterGUI() {
+        System.out.println ("EDT/EventDispatchThread (OlayRaporlamaSicimi) üzerinde GUI/GraphicsUserInterface (GrafikKullanýcýArayüzü) yaratýldý mý? "+ SwingUtilities.isEventDispatchThread());
+        JFrame çerçeve = new JFrame ("Swing Boyama Gösterisi-3");
+        çerçeve.setDefaultCloseOperation (3); // 3=JFrame.EXIT_ON_CLOSE
+        çerçeve.add (new Panelim()); // Sýnýf kurucusunu çaðýrýr...
+        çerçeve.setLocationRelativeTo (null);
+        çerçeve.pack();
+        çerçeve.setVisible (true);
+    } // yaratVeGösterGUI() metodu sonu...
+} // J5j_6 sýnýfý sonu...
+
+class Panelim extends JPanel {
+    private int squareX = 50;
+    private int squareY = 50;
+    private int squareW = 20;
+    private int squareH = 20;
+
+    public Panelim() {// Kurucu...
+        setBorder (BorderFactory.createLineBorder (Color.RED));
+        setBackground (Color.getHSBColor ((float)Math.random(), (float)Math.random(), (float)Math.random()) );
+
+        // Týklayýnca, eski konumdaki kare silinir ve yeni konumda belirir...
+        addMouseListener (new MouseAdapter() {// Kare, fare basmasýna duyarlý...
+            public void mousePressed (MouseEvent olay) {kareyiTaþý (olay.getX(), olay.getY());}
+        }); // add.. ifadesi sonu...
+
+        // Sürükleyince, kare sürüklenme boyunca yeni konumuna taþýnýr...
+        addMouseMotionListener (new MouseAdapter() {// Kare, fare sürüklemesine duyarlý...
+            public void mouseDragged (MouseEvent olay) {kareyiTaþý(olay.getX(),olay.getY());}
+        }); // add.. ifadesi sonu...
+    } // Panelim() kurucusu sonu...
+
+    private void kareyiTaþý (int x, int y) {
+        int KAYMA = 1;
+        // squareX, squareY, squareW, squareH (kare:X/Y/En/Boy) hazýr JPanel deðiþkenleri...
+        if ((squareX!=x) || (squareY!=y)) {
+            repaint (squareX,squareY, squareW+KAYMA, squareH+KAYMA); // paintComponent(..) hazýr metodu çaðýrýr...
+            squareX=x;
+            squareY=y;
+            repaint (squareX,squareY, squareW+KAYMA, squareH+KAYMA); // paintComponent(..) hazýr metodu çaðýrýr...
+        } // if kararý sonu...
+    } // kareyiTaþý(..) metodu sonu...
+
+    protected void paintComponent (Graphics g) {
+        super.paintComponent (g);
+        g.setColor (Color.YELLOW); // Yazý sarý...
+        g.drawString ("Bu benim özel panelimdir!", 50, 80);
+        g.setColor (Color.CYAN); // Kare camgöbeði...
+        g.fillRect (squareX, squareY, squareW, squareH);
+        g.setColor (Color.BLACK); // Kare çerçevesi siyah...
+        g.drawRect (squareX,squareY, squareW, squareH);
+    } // paintComponent(..) hazýr metodu sonu...
+
+    public Dimension getPreferredSize() {return new Dimension (250,200);} // Hazýr metod...
+} // Panelim sýnýfý sonu...
